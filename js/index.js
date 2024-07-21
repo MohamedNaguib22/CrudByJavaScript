@@ -119,6 +119,7 @@ const saveProduct = () => {
   productArr.push(objProduct);
   localStorage.setItem("productArr", JSON.stringify(productArr));
   restProduct();
+  showCountProduct();
 };
 
 // Rest Product input
@@ -131,9 +132,18 @@ const restProduct = () => {
   total.value = 0;
 };
 
+// showCountProduct
+const showCountProduct = () => {
+  const modelTitle = document.getElementById("title");
+  modelTitle.innerHTML = `CRUD Operation: Total Product (${productArr.length})`;
+};
+
+
+
 $(document).ready(function () {
   showCate();
   showCateTable();
   showCountCate();
+  showCountProduct();
   $("#dataTable").DataTable();
 });

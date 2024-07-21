@@ -19,7 +19,7 @@
     <!-- Start Container  -->
     <div class="container">
       <!-- Start Header -->
-      <div class="cardItem text-center mb-4 py-4">CRUD Operation</div>
+      <div class="cardItem text-center mb-4 py-4" id="title"></div>
       <!-- End Header -->
 
       <!-- Start Cat -->
@@ -40,7 +40,7 @@
           </div>
           <div class="d-flex button">
             <button
-              class="btn btn-primary btn-sm"
+              class="btn buttons btn-sm"
               id="btn-edit"
               type="button"
               data-toggle="modal"
@@ -130,7 +130,7 @@
         <div class="form-group col-md-6 col-sm-12">
           <button
             type="submit"
-            class="btn btn-success btn-custom"
+            class="btn buttons btn-custom"
             id="btn-save"
             onclick="saveProduct()"
           >
@@ -165,7 +165,7 @@
               <td>10</td>
               <td>30000</td>
               <td>
-                <button class="btn btn-primary btn-sm">
+                <button class="btn buttons btn-sm">
                   <i class="fas fa-edit"></i>
                 </button>
                 <button class="btn btn-danger btn-sm">

@@ -3,14 +3,14 @@
 }
 
 .cardItem {
-  background-color: #28a745;
+  background-color: #845EC2;
   color: white;
   font-size: 2.5rem;
   border-radius: 20px;
 }
 
 .card-body {
-  background-color: #8c9196;
+  background-color: #296073;
   color: white;
   border-radius: 20px !important;
 }
@@ -19,7 +19,10 @@
 .btn {
   margin-bottom: 10px;
 }
-
+.buttons {
+    background-color: #845EC2;
+    color: white;
+}
 .btn-custom {
   width: 100%;
 }
