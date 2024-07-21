@@ -29,17 +29,17 @@ const restCate = () => {
 };
 
 // Show Cate
-// const showCate = () => {
-//   let item = "";
-//   item += `
-//     <option selected>Select Category...</option>`;
+const showCate = () => {
+  let item = "";
+  item += `
+    <option selected>Select Category...</option>`;
 
-//   categoryArr.map((i) => {
-//     return (item += `
-//       <option>${i.categoryName}</option>`);
-//   });
-//   category.innerHTML = item;
-// };
+  categoryArr.map((i) => {
+    return (item += `
+      <option>${i.categoryName}</option>`);
+  });
+  category.innerHTML = item;
+};
 
 // Show Category Table
 // const showCateTable = () => {
