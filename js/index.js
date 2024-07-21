@@ -61,12 +61,23 @@ const showCateTable = () => {
 
 // Delete Cate
 const deleteCate = (id) => {
-  categoryArr = categoryArr.filter((_, index) => index !== id);
-  localStorage.categoryArr = JSON.stringify(categoryArr);
-  showCate();
-  showCateTable();
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      categoryArr = categoryArr.filter((_, index) => index !== id);
+      localStorage.categoryArr = JSON.stringify(categoryArr);
+    }
+    showCate();
+    showCateTable();
+  });
 };
-
 
 $(document).ready(function () {
   showCate();
