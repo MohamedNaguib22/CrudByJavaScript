@@ -17,7 +17,7 @@ const saveCategory = () => {
   let objCategory = {
     categoryName: categoryName.value,
   };
-  categoryArr.push(objCategory);
+  categoryArr = [...categoryArr, objCategory];
   localStorage.setItem("categoryArr", JSON.stringify(categoryArr));
   restCate();
   showCate();
@@ -50,7 +50,7 @@ const showCateTable = () => {
             <td class="text-center">${index}</td>
             <td class="text-center">${i.categoryName}</td>
             <td class="text-center">
-              <button class="btn btn-danger btn-sm">
+              <button class="btn btn-danger btn-sm" onclick="deleteCate(${index})">
                 <i class="fas fa-trash"></i>
               </button>
             </td>
@@ -59,8 +59,15 @@ const showCateTable = () => {
   document.getElementById("cateTable").innerHTML = item;
 };
 
-// Delete Cate 
-// const deleteCate = () => {}
+// Delete Cate
+const deleteCate = (id) => {
+  categoryArr = categoryArr.filter((_, index) => index !== id);
+  localStorage.categoryArr = JSON.stringify(categoryArr);
+  showCate();
+  showCateTable();
+};
+
+
 $(document).ready(function () {
   showCate();
   showCateTable();
