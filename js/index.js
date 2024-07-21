@@ -109,7 +109,7 @@ const totalCount = () => {
 // Save Product
 const saveProduct = () => {
   const objProduct = {
-    category: category.value,
+    category: category.options[category.selectedIndex].text,
     productName: productName.value,
     price: price.value,
     quantity: quantity.value,
@@ -118,6 +118,17 @@ const saveProduct = () => {
   };
   productArr.push(objProduct);
   localStorage.setItem("productArr", JSON.stringify(productArr));
+  restProduct();
+};
+
+// Rest Product input
+const restProduct = () => {
+  category.options[category.selectedIndex].text = "Select Category...";
+  productName.value = "";
+  price.value = 0;
+  quantity.value = 0;
+  discount.value = 0;
+  total.value = 0;
 };
 
 $(document).ready(function () {
