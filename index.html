@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD Operation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Start Container  -->
+    <div class="container">
+      <!-- Start Header -->
+      <div class="cardItem text-center mb-4 py-4">CRUD Operation</div>
+      <!-- End Header -->
+
+      <!-- Start Cat -->
+      <div class="form-row card-body mb-4">
+        <div class="form-group col-md-6 col-sm-12">
+          <label for="category">Category:</label>
+          <select id="category" class="form-control"></select>
+        </div>
+        <div class="form-group col-md-6 col-sm-12 flex">
+          <div class="flex-1">
+            <label for="categoryName">Category Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="categoryName"
+              placeholder="Enter Category Name..."
+            />
+          </div>
+          <div class="d-flex button">
+            <button
+              class="btn btn-primary btn-sm"
+              id="btn-edit"
+              type="button"
+              data-toggle="modal"
+              data-target="#modelId"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+
+            <button class="btn btn-success btn-sm" onclick="saveCategory()">
+              <i class="fas fa-save"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End Cat -->
+
+      <!-- Start Product -->
+      <div class="form-row card-body mb-4">
+        <div class="form-group col-md-4 col-sm-12">
+          <label for="productName">Product Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="productName"
+            placeholder="Enter Product Name..."
+          />
+        </div>
+        <div class="form-group col-md-2 col-sm-4 col-6">
+          <label for="quantity">Quantity:</label>
+          <input type="number" class="form-control" id="quantity" value="0" />
+        </div>
+        <div class="form-group col-md-2 col-sm-4 col-6">
+          <label for="price">Price:</label>
+          <input type="number" class="form-control" id="price" value="0" />
+        </div>
+        <div class="form-group col-md-2 col-sm-4 col-6">
+          <label for="discount">Discount:</label>
+          <input type="number" class="form-control" id="discount" value="0" />
+        </div>
+        <div class="form-group col-md-2 col-sm-4 col-6">
+          <label for="total">Total:</label>
+          <input
+            type="number"
+            class="form-control bg-danger text-white"
+            id="total"
+            value="0"
+            readonly
+          />
+        </div>
+      </div>
+      <!-- Start End -->
+
+      <!-- Start Button -->
+      <div class="form-row card-body">
+        <div class="form-group col-md-6 col-sm-12">
+          <button
+            type="button"
+            class="btn btn-danger btn-custom"
+            id="btn-delete"
+          >
+            <i class="fas fa-trash"></i> Delete
+          </button>
+        </div>
+        <div class="form-group col-md-6 col-sm-12">
+          <button
+            type="submit"
+            class="btn btn-success btn-custom"
+            id="btn-save"
+          >
+            <i class="fas fa-save"></i> Save
+          </button>
+        </div>
+      </div>
+      <!-- End Button -->
+
+      <!-- Start Table Products(Crud) -->
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>Category</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Discount</th>
+              <th>Total</th>
+              <th>Events</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Lenovo</td>
+              <td>Core i7</td>
+              <td>2</td>
+              <td>14750</td>
+              <td>10</td>
+              <td>30000</td>
+              <td>
+                <button class="btn btn-primary btn-sm">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-danger btn-sm">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+            <!-- Repeat for more entries -->
+          </tbody>
+        </table>
+      </div>
+      <!-- End Table Products(Crud) -->
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="modelId"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modelTitleId"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Category Table</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th class="text-center">#</th>
+                      <th class="text-center">Category</th>
+                      <th class="text-center">Events</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cateTable">
+                  
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Container  -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

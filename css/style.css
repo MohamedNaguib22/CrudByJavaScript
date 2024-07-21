@@ -1,0 +1,43 @@
+.container {
+  margin-top: 20px;
+}
+
+.cardItem {
+  background-color: #28a745;
+  color: white;
+  font-size: 2.5rem;
+  border-radius: 20px;
+}
+
+.card-body {
+  background-color: #8c9196;
+  color: white;
+  border-radius: 20px !important;
+}
+
+.form-control,
+.btn {
+  margin-bottom: 10px;
+}
+
+.btn-custom {
+  width: 100%;
+}
+
+.table-responsive {
+  margin-top: 20px;
+}
+.flex {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+.button {
+  margin-top: 30px;
+  gap: 5px;
+}
+
