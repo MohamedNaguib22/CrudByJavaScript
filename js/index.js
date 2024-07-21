@@ -42,22 +42,22 @@ const showCate = () => {
 };
 
 // Show Category Table
-// const showCateTable = () => {
-//   let item = "";
-//   categoryArr.map((i, index) => {
-//     return (item += `
-//         <tr>
-//             <td class="text-center">${index}</td>
-//             <td class="text-center">${i.categoryName}</td>
-//             <td class="text-center">
-//               <button class="btn btn-danger btn-sm">
-//                 <i class="fas fa-trash"></i>
-//               </button>
-//             </td>
-//         <tr>`);
-//   });
-//   document.getElementById("cateTable").innerHTML = item;
-// };
+const showCateTable = () => {
+  let item = "";
+  categoryArr.map((i, index) => {
+    return (item += `
+        <tr>
+            <td class="text-center">${index}</td>
+            <td class="text-center">${i.categoryName}</td>
+            <td class="text-center">
+              <button class="btn btn-danger btn-sm">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+        <tr>`);
+  });
+  document.getElementById("cateTable").innerHTML = item;
+};
 
 // Delete Cate 
 // const deleteCate = () => {}
