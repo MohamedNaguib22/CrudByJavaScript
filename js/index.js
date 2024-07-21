@@ -13,23 +13,22 @@ localStorage.categoryArr != null
   : (categoryArr = []);
 
 // save Category
-// const saveCategory = () => {
-//   let objCategory = {
-//     categoryName: categoryName.value,
-//   };
-//   categoryArr.push(objCategory);
-//   localStorage.setItem("categoryArr", JSON.stringify(categoryArr));
-//   restCate();
-//   showCate();
-//   showCateTable();
-// };
-
+const saveCategory = () => {
+  let objCategory = {
+    categoryName: categoryName.value,
+  };
+  categoryArr.push(objCategory);
+  localStorage.setItem("categoryArr", JSON.stringify(categoryArr));
+  restCate();
+  showCate();
+  showCateTable();
+};
 // // Rest
 // const restCate = () => {
 //   categoryName.value = "";
 // };
 
-// // Show Cate
+// Show Cate
 // const showCate = () => {
 //   let item = "";
 //   item += `
@@ -42,7 +41,7 @@ localStorage.categoryArr != null
 //   category.innerHTML = item;
 // };
 
-// // Show Category Table
+// Show Category Table
 // const showCateTable = () => {
 //   let item = "";
 //   categoryArr.map((i, index) => {
@@ -61,7 +60,7 @@ localStorage.categoryArr != null
 // };
 
 // Delete Cate 
-
+// const deleteCate = () => {}
 $(document).ready(function () {
   showCate();
   showCateTable();
