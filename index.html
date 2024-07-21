@@ -69,16 +69,38 @@
           />
         </div>
         <div class="form-group col-md-2 col-sm-4 col-6">
-          <label for="quantity">Quantity:</label>
-          <input type="number" class="form-control" id="quantity" value="0" />
+          <label for="price">Price:</label>
+          <input
+            type="number"
+            onkeyup="countToTal()"
+            onchange="countToTal()"
+            class="form-control"
+            id="price"
+            value="0"
+          />
         </div>
         <div class="form-group col-md-2 col-sm-4 col-6">
-          <label for="price">Price:</label>
-          <input type="number" class="form-control" id="price" value="0" />
+          <label for="quantity">Quantity:</label>
+          <input
+            onkeyup="countToTal()"
+            onchange="countToTal()"
+            type="number"
+            class="form-control"
+            id="quantity"
+            value="0"
+          />
         </div>
+
         <div class="form-group col-md-2 col-sm-4 col-6">
           <label for="discount">Discount:</label>
-          <input type="number" class="form-control" id="discount" value="0" />
+          <input
+            type="number"
+            onkeyup="countToTal()"
+            onchange="countToTal()"
+            class="form-control"
+            id="discount"
+            value="0"
+          />
         </div>
         <div class="form-group col-md-2 col-sm-4 col-6">
           <label for="total">Total:</label>
@@ -187,9 +209,7 @@
                       <th class="text-center">Events</th>
                     </tr>
                   </thead>
-                  <tbody id="cateTable">
-                  
-                  </tbody>
+                  <tbody id="cateTable"></tbody>
                 </table>
               </div>
             </div>
@@ -209,7 +229,8 @@
     <!-- End Container  -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
   </body>

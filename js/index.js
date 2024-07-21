@@ -79,8 +79,23 @@ const deleteCate = (id) => {
   });
 };
 
+// Total Count 
+const totalCount = () => {
+  if (price.value > 0) {
+    const ToTal = (quantity.value * price.value) - discount.value;
+    total.value = ToTal;
+    total.className.replace = "form-control bg-danger text-white";
+    total.className = "form-control bg-success text-white";
+  } else {
+    total.value = "";
+    total.className.replace = "form-control bg-success text-white";
+    total.className = "form-control bg-danger text-white";
+  }
+};
+
 $(document).ready(function () {
   showCate();
   showCateTable();
+
   $("#dataTable").DataTable();
 });
