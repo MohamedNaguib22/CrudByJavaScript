@@ -72,8 +72,8 @@
           <label for="price">Price:</label>
           <input
             type="number"
-            onkeyup="countToTal()"
-            onchange="countToTal()"
+            onkeyup="totalCount()"
+            onchange="totalCount()"
             class="form-control"
             id="price"
             value="0"
@@ -82,8 +82,8 @@
         <div class="form-group col-md-2 col-sm-4 col-6">
           <label for="quantity">Quantity:</label>
           <input
-            onkeyup="countToTal()"
-            onchange="countToTal()"
+            onkeyup="totalCount()"
+            onchange="totalCount()"
             type="number"
             class="form-control"
             id="quantity"
@@ -95,8 +95,8 @@
           <label for="discount">Discount:</label>
           <input
             type="number"
-            onkeyup="countToTal()"
-            onchange="countToTal()"
+            onkeyup="totalCount()"
+            onchange="totalCount()"
             class="form-control"
             id="discount"
             value="0"
@@ -131,6 +131,7 @@
             type="submit"
             class="btn btn-success btn-custom"
             id="btn-save"
+            onclick="saveProduct()"
           >
             <i class="fas fa-save"></i> Save
           </button>

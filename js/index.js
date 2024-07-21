@@ -12,6 +12,11 @@ localStorage.categoryArr != null
   ? (categoryArr = JSON.parse(localStorage.categoryArr))
   : (categoryArr = []);
 
+let productArr;
+localStorage.productArr != null
+  ? (productArr = JSON.parse(localStorage.productArr))
+  : (productArr = []);
+
 // save Category
 const saveCategory = () => {
   let objCategory = {
@@ -95,13 +100,25 @@ const totalCount = () => {
     total.className.replace = "form-control bg-danger text-white";
     total.className = "form-control bg-success text-white";
   } else {
-    total.value = "";
+    total.value = 0;
     total.className.replace = "form-control bg-success text-white";
     total.className = "form-control bg-danger text-white";
   }
 };
 
 // Save Product
+const saveProduct = () => {
+  const objProduct = {
+    category: category.value,
+    productName: productName.value,
+    price: price.value,
+    quantity: quantity.value,
+    discount: discount.value,
+    total: total.value,
+  };
+  productArr.push(objProduct);
+  localStorage.setItem("productArr", JSON.stringify(productArr));
+};
 
 $(document).ready(function () {
   showCate();
