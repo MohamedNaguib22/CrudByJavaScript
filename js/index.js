@@ -22,6 +22,7 @@ const saveCategory = () => {
   restCate();
   showCate();
   showCateTable();
+  showCountCate();
 };
 // Rest
 const restCate = () => {
@@ -76,13 +77,20 @@ const deleteCate = (id) => {
     }
     showCate();
     showCateTable();
+    showCountCate();
   });
 };
 
-// Total Count 
+// Show Count Cate
+const showCountCate = () => {
+  const modelTitle = document.getElementById("modelTitle");
+  modelTitle.innerHTML = `Total Category: (${categoryArr.length})`;
+};
+
+// Total Count
 const totalCount = () => {
   if (price.value > 0) {
-    const ToTal = (quantity.value * price.value) - discount.value;
+    const ToTal = quantity.value * price.value - discount.value;
     total.value = ToTal;
     total.className.replace = "form-control bg-danger text-white";
     total.className = "form-control bg-success text-white";
@@ -93,9 +101,11 @@ const totalCount = () => {
   }
 };
 
+// Save Product
+
 $(document).ready(function () {
   showCate();
   showCateTable();
-
+  showCountCate();
   $("#dataTable").DataTable();
 });
