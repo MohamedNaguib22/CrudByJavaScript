@@ -120,6 +120,7 @@ const saveProduct = () => {
   localStorage.setItem("productArr", JSON.stringify(productArr));
   restProduct();
   showCountProduct();
+  showProductTable();
 };
 
 // Rest Product input
@@ -138,12 +139,40 @@ const showCountProduct = () => {
   modelTitle.innerHTML = `CRUD Operation: Total Product (${productArr.length})`;
 };
 
-
+// show product table
+const showProductTable = () => {
+  item = "";
+  productArr.map((i, index) => {
+    return (item += `
+        <tr>
+              <td>${index}</td>
+              <td>${i.category}</td>
+              <td>${i.productName}</td>
+              <td>${i.quantity}</td>
+              <td>${i.price}</td>
+              <td>${i.discount}</td>
+              <td>${i.total}</td>
+              <td>
+                <button class="btn buttons btn-sm">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-danger btn-sm">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+            
+      `);
+    
+  });
+  document.getElementById("productTable").innerHTML = item;
+};
 
 $(document).ready(function () {
   showCate();
   showCateTable();
   showCountCate();
   showCountProduct();
+  showProductTable();
   $("#dataTable").DataTable();
 });
