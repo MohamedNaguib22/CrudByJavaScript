@@ -23,10 +23,10 @@ const saveCategory = () => {
   showCate();
   showCateTable();
 };
-// // Rest
-// const restCate = () => {
-//   categoryName.value = "";
-// };
+// Rest
+const restCate = () => {
+  categoryName.value = "";
+};
 
 // Show Cate
 // const showCate = () => {
