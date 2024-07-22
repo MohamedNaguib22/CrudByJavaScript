@@ -53,7 +53,7 @@ const showCateTable = () => {
   categoryArr.map((i, index) => {
     return (item += `
         <tr>
-            <td class="text-center">${index}</td>
+            <td class="text-center">${index + 1}</td>
             <td class="text-center">${i.categoryName}</td>
             <td class="text-center">
               <button class="btn btn-danger btn-sm" onclick="deleteCate(${index})">
@@ -125,7 +125,7 @@ const saveProduct = () => {
 
 // Rest Product input
 const restProduct = () => {
-  category.options[category.selectedIndex].text = "Select Category...";
+  category.selectedIndex = 0;
   productName.value = "";
   price.value = 0;
   quantity.value = 0;
@@ -138,14 +138,19 @@ const showCountProduct = () => {
   const modelTitle = document.getElementById("title");
   modelTitle.innerHTML = `CRUD Operation: Total Product (${productArr.length})`;
 };
-
 // show product table
 const showProductTable = () => {
-  item = "";
-  productArr.map((i, index) => {
-    return (item += `
+  if (productArr.length === 0) {
+    // Display "No product" message
+    document.getElementById(
+      "productTable"
+    ).innerHTML = `<tr><td class="text-center" colspan="9">No product Found..........</td></tr>`;
+  } else {
+    item = "";
+    productArr.map((i, index) => {
+      return (item += `
         <tr>
-              <td>${index}</td>
+              <td>${index + 1}</td>
               <td>${i.category}</td>
               <td>${i.productName}</td>
               <td>${i.quantity}</td>
@@ -156,16 +161,36 @@ const showProductTable = () => {
                 <button class="btn buttons btn-sm">
                   <i class="fas fa-edit"></i>
                 </button>
-                <button class="btn btn-danger btn-sm">
+                <button class="btn btn-danger btn-sm" onclick="deleteProduct(${index})">
                   <i class="fas fa-trash"></i>
                 </button>
               </td>
             </tr>
             
       `);
-    
+    });
+    document.getElementById("productTable").innerHTML = item;
+  }
+};
+
+// Delete Products
+const deleteProduct = (id) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      productArr.splice(id, 1);
+      localStorage.productArr = JSON.stringify(productArr);
+    }
+    showProductTable();
+    showCountProduct();
   });
-  document.getElementById("productTable").innerHTML = item;
 };
 
 $(document).ready(function () {
