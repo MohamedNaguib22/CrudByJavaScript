@@ -17,6 +17,9 @@ localStorage.productArr != null
   ? (productArr = JSON.parse(localStorage.productArr))
   : (productArr = []);
 
+let confirmClick = "create";
+let idProduct;
+
 // save Category
 const saveCategory = () => {
   let objCategory = {
@@ -106,17 +109,24 @@ const totalCount = () => {
   }
 };
 
+// Validtion Category
+
 // Save Product
 const saveProduct = () => {
   const objProduct = {
-    category: category.options[category.selectedIndex].text,
+    category: category.value,
     productName: productName.value,
     price: price.value,
     quantity: quantity.value,
     discount: discount.value,
     total: total.value,
   };
-  productArr.push(objProduct);
+  if (confirmClick === "edit") {
+    productArr = productArr.map((i, index) => index === idProduct ? {...objProduct} : i);
+    // productArr[idProduct] = objProduct
+  } else {
+    productArr.push(objProduct);
+  }
   localStorage.setItem("productArr", JSON.stringify(productArr));
   restProduct();
   showCountProduct();
@@ -140,15 +150,9 @@ const showCountProduct = () => {
 };
 // show product table
 const showProductTable = () => {
-  if (productArr.length === 0) {
-    // Display "No product" message
-    document.getElementById(
-      "productTable"
-    ).innerHTML = `<tr><td class="text-center" colspan="9">No product Found..........</td></tr>`;
-  } else {
-    item = "";
-    productArr.map((i, index) => {
-      return (item += `
+  let item = "";
+  productArr.map((i, index) => {
+    return (item += `
         <tr>
               <td>${index + 1}</td>
               <td>${i.category}</td>
@@ -158,7 +162,7 @@ const showProductTable = () => {
               <td>${i.discount}</td>
               <td>${i.total}</td>
               <td>
-                <button class="btn buttons btn-sm">
+                <button class="btn buttons btn-sm" onclick="editProduct(${index})">
                   <i class="fas fa-edit"></i>
                 </button>
                 <button class="btn btn-danger btn-sm" onclick="deleteProduct(${index})">
@@ -168,9 +172,8 @@ const showProductTable = () => {
             </tr>
             
       `);
-    });
-    document.getElementById("productTable").innerHTML = item;
-  }
+  });
+  document.getElementById("productTable").innerHTML = item;
 };
 
 // Delete Products
@@ -191,6 +194,20 @@ const deleteProduct = (id) => {
     showProductTable();
     showCountProduct();
   });
+};
+
+// Edit Product
+
+const editProduct = (id) => {
+  const findIndex = productArr.find((_, index) => index === id);
+  category.value = findIndex.category;
+  productName.value = findIndex.productName;
+  price.value = findIndex.price;
+  quantity.value = findIndex.quantity;
+  discount.value = findIndex.discount;
+  total.value = findIndex.total;
+  idProduct = id;
+  confirmClick = "edit";
 };
 
 $(document).ready(function () {
