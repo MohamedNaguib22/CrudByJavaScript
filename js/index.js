@@ -75,7 +75,7 @@ const deleteCate = (id) => {
     text: "You won't be able to revert this!",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#3085d6",
+    confirmButtonColor: "#296073",
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
@@ -109,7 +109,21 @@ const totalCount = () => {
   }
 };
 
-// Validtion Category
+// Validation Category
+const validCategory = () => {
+  if (categoryName.value.length === 0) {
+    
+      Swal.fire({
+        title: "Please enter a valid category?",
+        icon: "error",
+        confirmButtonColor: "#296073",
+      });
+    return false;
+  } else {
+    saveCategory();
+    return true;
+  }
+};
 
 // Save Product
 const saveProduct = () => {
@@ -122,7 +136,9 @@ const saveProduct = () => {
     total: total.value,
   };
   if (confirmClick === "edit") {
-    productArr = productArr.map((i, index) => index === idProduct ? {...objProduct} : i);
+    productArr = productArr.map((i, index) =>
+      index === idProduct ? { ...objProduct } : i
+    );
     // productArr[idProduct] = objProduct
   } else {
     productArr.push(objProduct);
@@ -183,7 +199,7 @@ const deleteProduct = (id) => {
     text: "You won't be able to revert this!",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#3085d6",
+    confirmButtonColor: "#296073",
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
