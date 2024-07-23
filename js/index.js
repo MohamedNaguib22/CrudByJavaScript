@@ -112,12 +112,11 @@ const totalCount = () => {
 // Validation Category
 const validCategory = () => {
   if (categoryName.value.length === 0) {
-    
-      Swal.fire({
-        title: "Please enter a valid category?",
-        icon: "error",
-        confirmButtonColor: "#296073",
-      });
+    Swal.fire({
+      title: "Please enter a valid category?",
+      icon: "error",
+      confirmButtonColor: "#296073",
+    });
     return false;
   } else {
     saveCategory();
@@ -147,6 +146,7 @@ const saveProduct = () => {
   restProduct();
   showCountProduct();
   showProductTable();
+  totalCount();
 };
 
 // Rest Product input
@@ -213,7 +213,6 @@ const deleteProduct = (id) => {
 };
 
 // Edit Product
-
 const editProduct = (id) => {
   const findIndex = productArr.find((_, index) => index === id);
   category.value = findIndex.category;
@@ -224,6 +223,26 @@ const editProduct = (id) => {
   total.value = findIndex.total;
   idProduct = id;
   confirmClick = "edit";
+};
+
+// Validation Product
+const validProduct = () => {
+  const valid =
+    category.value.length === 0 ||
+    productName.value.length === 0 ||
+    price.value <= 0 ||
+    quantity.value <= 0 
+  if(valid) {
+        Swal.fire({
+          title: "Please enter a complete all product input?",
+          icon: "error",
+          confirmButtonColor: "#296073",
+        });
+        return false;
+  }else {
+    saveProduct();
+    return true
+  }
 };
 
 $(document).ready(function () {
