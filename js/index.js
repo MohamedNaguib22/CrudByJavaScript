@@ -136,7 +136,7 @@ const saveProduct = () => {
   };
   if (confirmClick === "edit") {
     productArr = productArr.map((i, index) =>
-      index === idProduct ? { ...objProduct } : i
+      index === idProduct ? objProduct : i
     );
     // productArr[idProduct] = objProduct
   } else {
@@ -166,33 +166,58 @@ const showCountProduct = () => {
 };
 // show product table
 const showProductTable = () => {
-  let item = "";
-  productArr.map((i, index) => {
-    return (item += `
-        <tr>
-              <td>${index + 1}</td>
-              <td>${i.category}</td>
-              <td>${i.productName}</td>
-              <td>${i.quantity}</td>
-              <td>${i.price}</td>
-              <td>${i.discount}</td>
-              <td>${i.total}</td>
-              <td>
-                <button class="btn buttons btn-sm" onclick="editProduct(${index})">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button class="btn btn-danger btn-sm" onclick="deleteProduct(${index})">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-            
-      `);
+  const table = $("#dataTable").DataTable(); 
+  table.clear();
+  productArr.forEach((product, index) => {
+    table.row
+      .add([
+        index + 1,
+        product.category,
+        product.productName,
+        product.quantity,
+        product.price,
+        product.discount,
+        product.total,
+        `<button class="btn buttons btn-sm" onclick="editProduct(${index})">
+        <i class="fas fa-edit"></i>
+      </button>
+      <button class="btn btn-danger btn-sm" onclick="deleteProduct(${index})">
+        <i class="fas fa-trash"></i>
+      </button>`,
+      ])
+      .draw(false); 
   });
-  document.getElementById("productTable").innerHTML = item;
 };
 
+// const showProductTable = () => {
+
+//   let item = "";
+//   productArr.map((i, index) => {
+//     return (item += `
+//         <tr>
+//               <td>${index + 1}</td>
+//               <td>${i.category}</td>
+//               <td>${i.productName}</td>
+//               <td>${i.quantity}</td>
+//               <td>${i.price}</td>
+//               <td>${i.discount}</td>
+//               <td>${i.total}</td>
+//               <td>
+//                 <button class="btn buttons btn-sm" onclick="editProduct(${index})">
+//                   <i class="fas fa-edit"></i>
+//                 </button>
+//                 <button class="btn btn-danger btn-sm" onclick="deleteProduct(${index})">
+//                   <i class="fas fa-trash"></i>
+//                 </button>
+//               </td>
+//             </tr>
+//       `);
+//   });
+//   document.getElementById("productTable").innerHTML = item;
+// };
+
 // Delete Products
+
 const deleteProduct = (id) => {
   Swal.fire({
     title: "Are you sure?",
